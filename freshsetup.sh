@@ -246,14 +246,16 @@ if [ "$comp_type" = "n" ]; then
 	#install bonjour FIXME
 	#install airvideo FIXME
 	echo -e "Done\041"
-	echo -e -n "Installing video card drivers..."
 	#install video card drivers
 	if [ "$comp_video" = "a" ]; then
+		echo -e -n "Installing ATI video card drivers..."
 		apt-get -y -qq install fglrx &> tmp.log #ati drivers
+		echo -e "Done\041"
 	elif [ "$comp_video" = "n" ]; then
+		echo -e -n "Installing nVidia video card drivers..."
 		apt-get -y -qq install nvidia-current &> tmp.log #nvidia drivers
+		echo -e "Done\041"
 	fi
-	echo -e "Done\041"
 fi
 
 #install netbook only--------------------
