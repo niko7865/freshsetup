@@ -1,3 +1,7 @@
 This is a script to install the programs I use most, it has not been tested.
 
 Soon I will update this README with what the program installs/does.
+
+git add [file/.]
+git commit [file/-a] -m "message"
+git push origin master

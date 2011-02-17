@@ -164,13 +164,7 @@ echo -e "Done\041"
 
 #install applications for all from sources
 echo -e -n "Installing software..."
-apt-get -qq -y --allow-unauthenticated install \
-ubuntu-restricted-addons \
-gstreamer0.10-plugins-ugly-multiverse unrar gstreamer0.10-plugins-bad-multiverse \
-libavcodec-extra-52 libmp4v2-0 \
-faenza-icon-theme gdebi \
-filezilla vlc smplayer htop pidgin synapse shutter indicator-weather chromium docky \
-minitube libqt4-dbus libqt4-network libqtcore4 libqtgui4 &> tmp.log
+apt-get -qq -y --allow-unauthenticated install ubuntu-restricted-addons gstreamer0.10-plugins-ugly-multiverse unrar gstreamer0.10-plugins-bad-multiverse libavcodec-extra-52 libmp4v2-0 faenza-icon-theme gdebi filezilla vlc smplayer htop pidgin synapse shutter indicator-weather chromium docky minitube libqt4-dbus libqt4-network libqtcore4 libqtgui4 &> tmp.log
 #-download and install ubuntu tweak and remove file
 wget $source_ubuntutweak -O /tmp/NIKOubuntutweak.deb &> tmp.log
 dpkg -i /tmp/NIKOubuntutweak.deb &> tmp.log
@@ -228,9 +222,7 @@ echo -e "Done\041"
 #install desktop only--------------------
 if [ "$comp_type" = "n" ]; then
 	echo -e -n "Installing desktop specific software..."
-	apt-get -qq -y --allow-unauthenticated install \
-	jdownloader libdvdcss2 handbrake cover-thumbnailer rawtherapee stellarium \
-	xbmc gimp gimp-ufraw gnome-raw-thumbnailer miro playonlinux python-xlib &> tmp.log
+	apt-get -qq -y --allow-unauthenticated install jdownloader libdvdcss2 handbrake cover-thumbnailer rawtherapee stellarium xbmc gimp gimp-ufraw gnome-raw-thumbnailer miro playonlinux python-xlib &> tmp.log
 	if [ "$comp_arch" = "x86_64" ]; then
 		wget -q $source_virtualbox64 -O /tmp/NIKOvirtualbox.deb
 		wget -q $source_covergloobus64 -O /tmp/NIKOcovergloobus.deb
