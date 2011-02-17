@@ -111,7 +111,7 @@ done
 
 #remove unwanted packages----------------
 echo -e -n "Removing unwanted software..."
-apt-get -y -qq purge empathy empathy-common nautilus-sendto-empathy openoffice*.* &>> tmp.log
+apt-get -y -q purge empathy empathy-common nautilus-sendto-empathy openoffice*.* &>> tmp.log
 echo -e "Done\041"
 
 #install new sources---------------------
@@ -178,17 +178,17 @@ echo -e "Done Installing New Sources\041"
 
 #update package lists--------------------
 echo -e -n "Updating package lists..."
-apt-get -qq update &>> tmp.log
+apt-get -q update &>> tmp.log
 echo -e "Done\041"
 
 #install updates-------------------------
 echo -e -n "Installing updates..."
-apt-get -qq -y --allow-unauthenticated dist-upgrade &>> tmp.log
+apt-get -q -y --allow-unauthenticated dist-upgrade &>> tmp.log
 echo -e "Done\041"
 
 #install applications for all from sources
 echo -e "Installing software..."
-apt-get -qq -y --allow-unauthenticated install ubuntu-restricted-addons gstreamer0.10-plugins-ugly-multiverse unrar gstreamer0.10-plugins-bad-multiverse libavcodec-extra-52 libmp4v2-0 faenza-icon-theme gdebi filezilla vlc smplayer htop pidgin synapse shutter indicator-weather chromium docky minitube libqt4-dbus libqt4-network libqtcore4 libqtgui4 libreoffice libreoffice-gnome &>> tmp.log
+apt-get -q -y --allow-unauthenticated install ubuntu-restricted-addons gstreamer0.10-plugins-ugly-multiverse unrar gstreamer0.10-plugins-bad-multiverse libavcodec-extra-52 libmp4v2-0 faenza-icon-theme gdebi filezilla vlc smplayer htop pidgin synapse shutter indicator-weather chromium docky minitube libqt4-dbus libqt4-network libqtcore4 libqtgui4 libreoffice libreoffice-gnome &>> tmp.log
 #-download and install ubuntu tweak and remove file
 echo -e -n "Downloading Ubuntu Tweak..."
 wget $source_ubuntutweak -O /tmp/NIKOubuntutweak.deb &>> tmp.log
@@ -208,7 +208,7 @@ echo -e "Done Installing Common Software\041"
 #install special stable/unstable all-----------------
 if [ "$comp_stable" = "n" ]; then
 	echo -e -n "Installing unstable software..."
-	apt-get -qq -y --allow-unauthenticated install firefox-$pver_firefox firefox-$pver_firefox-gnome-support &>> tmp.log
+	apt-get -q -y --allow-unauthenticated install firefox-$pver_firefox firefox-$pver_firefox-gnome-support &>> tmp.log
 	echo -e "Done Installing Unstable Software\041"
 fi
 
@@ -216,7 +216,7 @@ fi
 comp_arch=`uname -m`
 if [ "$comp_arch" = "x86_64" ]; then
 	echo -e "Installing 64bit specific software..."
-	apt-get -qq -y --allow-unauthenticated install w64codecs &>> tmp.log #windows codecs 64bit
+	apt-get -q -y --allow-unauthenticated install w64codecs &>> tmp.log #windows codecs 64bit
 	#install 64bit flash FIXME
 	#install sublime text FIXME
 	#get chrome stable or unstable
@@ -234,7 +234,7 @@ if [ "$comp_arch" = "x86_64" ]; then
 	echo -e "Ok"
 else
 	echo -e "Installing 32bit specific software..."
-	apt-get -qq -y --allow-unauthenticated install w32codecs &>> tmp.log #windows codecs 32bit
+	apt-get -q -y --allow-unauthenticated install w32codecs &>> tmp.log #windows codecs 32bit
 	#install sublime text FIXME
 	#get chrome stable or unstable
 	if [ "$comp_stable" = "n" ]; then
@@ -265,7 +265,7 @@ echo -e "Done Installing 32/64bit Specific Software (Non-PPA)\041"
 #install desktop only--------------------
 if [ "$comp_type" = "n" ]; then
 	echo -e -n "Installing desktop specific software..."
-	apt-get -qq -y --allow-unauthenticated install jdownloader libdvdcss2 handbrake-gtk cover-thumbnailer rawtherapee stellarium xbmc gimp gimp-ufraw gnome-raw-thumbnailer miro playonlinux python-xlib &>> tmp.log
+	apt-get -q -y --allow-unauthenticated install jdownloader libdvdcss2 handbrake-gtk cover-thumbnailer rawtherapee stellarium xbmc gimp gimp-ufraw gnome-raw-thumbnailer miro playonlinux python-xlib &>> tmp.log
 	if [ "$comp_arch" = "x86_64" ]; then
 		echo -e -n "Downloading VirtualBox 64bit..."
 		wget -q $source_virtualbox64 -O /tmp/NIKOvirtualbox.deb
@@ -292,11 +292,11 @@ if [ "$comp_type" = "n" ]; then
 	#install video card drivers
 	if [ "$comp_video" = "a" ]; then
 		echo -e -n "Installing ATI video card drivers..."
-		apt-get -y -qq install fglrx &>> tmp.log #ati drivers
+		apt-get -y -q install fglrx &>> tmp.log #ati drivers
 		echo -e "Ok"
 	elif [ "$comp_video" = "n" ]; then
 		echo -e -n "Installing nVidia video card drivers..."
-		apt-get -y -qq install nvidia-current &>> tmp.log #nvidia drivers
+		apt-get -y -q install nvidia-current &>> tmp.log #nvidia drivers
 		echo -e "Ok"
 	fi
 	echo -e "Done Installing Desktop Specific Software\041"
