@@ -111,8 +111,7 @@ done
 
 #remove unwanted packages----------------
 echo -e -n "Removing unwanted software..."
-apt-get -y -qq purge \
-empathy empathy-common nautilus-sendto-empathy &>> tmp.log
+apt-get -y -qq purge empathy empathy-common nautilus-sendto-empathy openoffice*.* &>> tmp.log
 echo -e "Done\041"
 
 #install new sources---------------------
@@ -123,6 +122,7 @@ add-apt-repository ppa:synapse-core/ppa &> tmp.log #synapse
 add-apt-repository ppa:shutter/ppa &> tmp.log #shutter
 add-apt-repository ppa:weather-indicator-team/ppa &> tmp.log #indicator-weather
 add-apt-repository ppa:nilarimogard/webupd8 &> tmp.log #minitube
+add-apt-repository ppa:libreoffice/ppa &> tmp.log #libreoffice
 #-special sources------------------------
 #--unstable/stable-----------------------
 if [ "$comp_stable" = "n" ]; then
@@ -164,7 +164,7 @@ echo -e "Done\041"
 
 #install applications for all from sources
 echo -e -n "Installing software..."
-apt-get -qq -y --allow-unauthenticated install ubuntu-restricted-addons gstreamer0.10-plugins-ugly-multiverse unrar gstreamer0.10-plugins-bad-multiverse libavcodec-extra-52 libmp4v2-0 faenza-icon-theme gdebi filezilla vlc smplayer htop pidgin synapse shutter indicator-weather chromium docky minitube libqt4-dbus libqt4-network libqtcore4 libqtgui4 &> tmp.log
+apt-get -qq -y --allow-unauthenticated install ubuntu-restricted-addons gstreamer0.10-plugins-ugly-multiverse unrar gstreamer0.10-plugins-bad-multiverse libavcodec-extra-52 libmp4v2-0 faenza-icon-theme gdebi filezilla vlc smplayer htop pidgin synapse shutter indicator-weather chromium docky minitube libqt4-dbus libqt4-network libqtcore4 libqtgui4 libreoffice libreoffice-gnome &> tmp.log
 #-download and install ubuntu tweak and remove file
 wget $source_ubuntutweak -O /tmp/NIKOubuntutweak.deb &> tmp.log
 dpkg -i /tmp/NIKOubuntutweak.deb &> tmp.log
