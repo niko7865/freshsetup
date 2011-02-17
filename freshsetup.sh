@@ -221,7 +221,7 @@ echo -e "Done\041"
 #install desktop only--------------------
 if [ "$comp_type" = "n" ]; then
 	echo -e -n "Installing desktop specific software..."
-	apt-get -q -y --allow-unauthenticated install jdownloader libdvdcss2 handbrake-gtk cover-thumbnailer rawtherapee stellarium xbmc gimp gimp-ufraw gnome-raw-thumbnailer miro playonlinux python-xlib &>> tmp.log
+	apt-get -q -y --allow-unauthenticated install jdownloader libdvdcss2 handbrake-gtk cover-thumbnailer rawtherapee stellarium xbmc gimp gimp-ufraw gnome-raw-thumbnailer miro python-xlib &>> tmp.log
 	if [ "$comp_arch" = "x86_64" ]; then
 		wget -q $source_virtualbox64 -O /tmp/NIKOvirtualbox.deb
 		wget -q $source_covergloobus64 -O /tmp/NIKOcovergloobus.deb
@@ -242,6 +242,8 @@ if [ "$comp_type" = "n" ]; then
 	elif [ "$comp_video" = "n" ]; then
 		apt-get -y -q install nvidia-current &>> tmp.log #nvidia drivers
 	fi
+	#playonlinux requires user interaction to install
+	apt-get -qq -y --allow-unauthenticated install playonlinux
 	echo -e "Done\041"
 fi
 
